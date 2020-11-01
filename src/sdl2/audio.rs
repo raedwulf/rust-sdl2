@@ -567,7 +567,7 @@ impl<'a, Channel: AudioFormatNum> AudioQueue<Channel> {
             let iscapture_flag = 0;
             let device_id = sys::SDL_OpenAudioDevice(
                 device_ptr as *const c_char, iscapture_flag, &desired,
-                obtained.as_mut_ptr(), 0
+                obtained.as_mut_ptr(), sys::SDL_AUDIO_ALLOW_ANY_CHANGE as i32
             );
             match device_id {
                 0 => {
